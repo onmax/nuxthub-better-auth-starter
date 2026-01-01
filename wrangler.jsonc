@@ -1,0 +1,15 @@
+// Cloudflare Workers configuration
+// Create resources: wrangler d1 create <name>, wrangler kv namespace create <name>
+// Docs: https://developers.cloudflare.com/workers/wrangler/configuration/
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "nuxthub-better-auth-starter",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    { "binding": "DB", "database_id": "YOUR_D1_DATABASE_ID" }
+  ],
+  "kv_namespaces": [
+    { "binding": "KV", "id": "YOUR_KV_NAMESPACE_ID" },
+    { "binding": "CACHE", "id": "YOUR_CACHE_NAMESPACE_ID" }
+  ]
+}

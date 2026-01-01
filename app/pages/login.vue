@@ -1,20 +1,27 @@
 <script setup lang="ts">
+import { z } from 'zod'
+import type { FormSubmitEvent } from '@nuxt/ui'
+
+definePageMeta({ auth: 'guest' })
+
 const { signIn } = useUserSession()
 const toast = useToast()
 
-const email = ref('')
-const password = ref('')
+const schema = z.object({
+  email: z.string().email('Invalid email'),
+  password: z.string().min(8, 'Must be at least 8 characters'),
+})
+type Schema = z.output<typeof schema>
+
+const state = reactive({ email: '', password: '' })
 const loading = ref(false)
 
-async function handleSignIn() {
+async function onSubmit(event: FormSubmitEvent<Schema>) {
   loading.value = true
-  await signIn.email(
-    { email: email.value, password: password.value },
-    {
-      onSuccess: () => navigateTo('/dashboard'),
-      onError: (ctx: { error: Error }) => toast.add({ title: 'Error', description: ctx.error.message, color: 'error' }),
-    },
-  )
+  await signIn.email(event.data, {
+    onSuccess: () => navigateTo('/dashboard'),
+    onError: (ctx: { error: Error }) => toast.add({ title: 'Error', description: ctx.error.message, color: 'error' }),
+  })
   loading.value = false
 }
 
@@ -28,17 +35,17 @@ async function handleGitHub() {
     <UCard class="w-full max-w-md">
       <template #header>
         <h2 class="text-xl font-semibold">Sign In</h2>
-        <p class="text-sm text-gray-500">Enter your credentials to access your account</p>
+        <p class="text-sm text-muted">Enter your credentials to access your account</p>
       </template>
 
-      <div class="space-y-4">
-        <UFormField label="Email">
-          <UInput v-model="email" type="email" placeholder="you@example.com" />
+      <UForm :schema :state class="space-y-4" @submit="onSubmit">
+        <UFormField label="Email" name="email">
+          <UInput v-model="state.email" type="email" placeholder="you@example.com" />
         </UFormField>
-        <UFormField label="Password">
-          <UInput v-model="password" type="password" placeholder="Your password" />
+        <UFormField label="Password" name="password">
+          <UInput v-model="state.password" type="password" placeholder="Your password" />
         </UFormField>
-        <UButton block :loading="loading" @click="handleSignIn">Sign In</UButton>
+        <UButton type="submit" block :loading>Sign In</UButton>
 
         <UDivider label="or" />
 
@@ -46,7 +53,7 @@ async function handleGitHub() {
           <UIcon name="i-simple-icons-github" />
           Continue with GitHub
         </UButton>
-      </div>
+      </UForm>
 
       <template #footer>
         <p class="text-center text-sm">

@@ -1,66 +1,65 @@
 # NuxtHub Better Auth Starter
 
-A minimal starter template for [NuxtHub](https://hub.nuxt.com) with [Better Auth](https://better-auth.com) integration.
+Minimal [NuxtHub](https://hub.nuxt.com) + [Better Auth](https://better-auth.com) template. Multi-cloud ready.
 
 ## Features
 
-- Email/Password authentication
-- GitHub OAuth
-- Session management with KV secondary storage
-- SQLite database (D1) for user storage
-- Protected routes with route rules
+- Email/password + GitHub OAuth
+- Session storage with KV
+- Protected routes via route rules
 - Nuxt UI components
 
 ## Setup
 
-1. Clone and install dependencies:
-
 ```bash
 pnpm install
-```
-
-2. Copy `.env.example` to `.env` and fill in your values:
-
-```bash
 cp .env.example .env
-```
-
-3. Create a GitHub OAuth App at https://github.com/settings/developers
-   - Set callback URL to `http://localhost:3000/api/auth/callback/github`
-
-4. Start development server:
-
-```bash
 pnpm dev
 ```
 
-## Deploy to Cloudflare
+Create GitHub OAuth App at https://github.com/settings/developers with callback `http://localhost:3000/api/auth/callback/github`
 
-1. Create Cloudflare resources:
+## Deploy
+
+NuxtHub auto-detects your hosting provider. Configure bindings per platform:
+
+### Cloudflare Workers
 
 ```bash
-npx wrangler d1 create nuxthub-better-auth
-npx wrangler kv namespace create KV
-npx wrangler kv namespace create CACHE
+# Create resources
+wrangler d1 create my-db
+wrangler kv namespace create KV
+wrangler kv namespace create CACHE
+
+# Update wrangler.jsonc with IDs, then:
+pnpm build && wrangler deploy
 ```
 
-2. Update `nuxt.config.ts` with the IDs from step 1
+### Vercel
 
-3. Build and deploy:
+Set environment variables in Vercel dashboard:
+- `DATABASE_URL` - Neon/Supabase PostgreSQL
+- `KV_REST_API_URL` + `KV_REST_API_TOKEN` - Vercel KV or Upstash
 
-```bash
-pnpm build
-npx wrangler deploy
+### Turso + Upstash (any host)
+
+```env
+TURSO_DATABASE_URL=libsql://your-db.turso.io
+TURSO_AUTH_TOKEN=your-token
+UPSTASH_REDIS_REST_URL=https://your-redis.upstash.io
+UPSTASH_REDIS_REST_TOKEN=your-token
 ```
 
 ## Environment Variables
 
-| Variable | Description |
-|----------|-------------|
-| `NUXT_BETTER_AUTH_SECRET` | Secret key for auth (min 32 chars) |
-| `NUXT_PUBLIC_SITE_URL` | Your site URL for OAuth callbacks |
-| `GITHUB_CLIENT_ID` | GitHub OAuth client ID |
-| `GITHUB_CLIENT_SECRET` | GitHub OAuth client secret |
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `NUXT_BETTER_AUTH_SECRET` | Yes | Auth secret (32+ chars) |
+| `NUXT_PUBLIC_SITE_URL` | Yes | Site URL for OAuth callbacks |
+| `GITHUB_CLIENT_ID` | Yes | GitHub OAuth client ID |
+| `GITHUB_CLIENT_SECRET` | Yes | GitHub OAuth secret |
+
+See `.env.example` for database/KV provider options.
 
 ## License
 

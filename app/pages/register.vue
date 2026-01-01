@@ -1,21 +1,28 @@
 <script setup lang="ts">
+import { z } from 'zod'
+import type { FormSubmitEvent } from '@nuxt/ui'
+
+definePageMeta({ auth: 'guest' })
+
 const { signUp, signIn } = useUserSession()
 const toast = useToast()
 
-const name = ref('')
-const email = ref('')
-const password = ref('')
+const schema = z.object({
+  name: z.string().min(2, 'Must be at least 2 characters'),
+  email: z.string().email('Invalid email'),
+  password: z.string().min(8, 'Must be at least 8 characters'),
+})
+type Schema = z.output<typeof schema>
+
+const state = reactive({ name: '', email: '', password: '' })
 const loading = ref(false)
 
-async function handleRegister() {
+async function onSubmit(event: FormSubmitEvent<Schema>) {
   loading.value = true
-  await signUp.email(
-    { name: name.value, email: email.value, password: password.value },
-    {
-      onSuccess: () => navigateTo('/dashboard'),
-      onError: (ctx: { error: Error }) => toast.add({ title: 'Error', description: ctx.error.message, color: 'error' }),
-    },
-  )
+  await signUp.email(event.data, {
+    onSuccess: () => navigateTo('/dashboard'),
+    onError: (ctx: { error: Error }) => toast.add({ title: 'Error', description: ctx.error.message, color: 'error' }),
+  })
   loading.value = false
 }
 
@@ -29,20 +36,20 @@ async function handleGitHub() {
     <UCard class="w-full max-w-md">
       <template #header>
         <h2 class="text-xl font-semibold">Create Account</h2>
-        <p class="text-sm text-gray-500">Sign up to get started</p>
+        <p class="text-sm text-muted">Sign up to get started</p>
       </template>
 
-      <div class="space-y-4">
-        <UFormField label="Name">
-          <UInput v-model="name" placeholder="Your name" />
+      <UForm :schema :state class="space-y-4" @submit="onSubmit">
+        <UFormField label="Name" name="name">
+          <UInput v-model="state.name" placeholder="Your name" />
         </UFormField>
-        <UFormField label="Email">
-          <UInput v-model="email" type="email" placeholder="you@example.com" />
+        <UFormField label="Email" name="email">
+          <UInput v-model="state.email" type="email" placeholder="you@example.com" />
         </UFormField>
-        <UFormField label="Password">
-          <UInput v-model="password" type="password" placeholder="Create a password" />
+        <UFormField label="Password" name="password">
+          <UInput v-model="state.password" type="password" placeholder="Create a password" />
         </UFormField>
-        <UButton block :loading="loading" @click="handleRegister">Create Account</UButton>
+        <UButton type="submit" block :loading>Create Account</UButton>
 
         <UDivider label="or" />
 
@@ -50,7 +57,7 @@ async function handleGitHub() {
           <UIcon name="i-simple-icons-github" />
           Continue with GitHub
         </UButton>
-      </div>
+      </UForm>
 
       <template #footer>
         <p class="text-center text-sm">

@@ -19,7 +19,8 @@
     "better-auth": "^1.4.7",
     "nuxt": "^4.2.0",
     "tailwindcss": "^4.1.18",
-    "unstorage": "^1.17.3"
+    "unstorage": "^1.17.3",
+    "zod": "^4.3.4"
   },
   "devDependencies": {
     "@libsql/client": "^0.15.0",
