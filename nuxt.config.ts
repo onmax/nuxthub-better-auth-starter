@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
   modules: ['@nuxthub/core', '@nuxt/ui', '@onmax/nuxt-better-auth'],
 
-  future: { compatibilityVersion: 4 },
+  css: ['~/assets/css/main.css'],
 
   hub: {
     db: 'sqlite',
@@ -32,6 +32,7 @@ export default defineNuxtConfig({
     cloudflare: {
       wrangler: {
         compatibility_flags: ['nodejs_compat'],
+        observability: { enabled: true, logs: { enabled: true, invocation_logs: true } },
         d1_databases: [{ binding: 'DB', database_id: '7ceacd83-9a4a-45b3-adf3-bd127df04bce' }],
         kv_namespaces: [
           { binding: 'KV', id: '4f701e72f4414181b2a760cbb798fa8d' },
