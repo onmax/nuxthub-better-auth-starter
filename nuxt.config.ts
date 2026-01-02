@@ -11,10 +11,12 @@ export default defineNuxtConfig({
     },
     kv: {
       driver: 'cloudflare-kv-binding',
+      binding: 'KV',
       namespaceId: '4f701e72f4414181b2a760cbb798fa8d',
     },
     cache: {
       driver: 'cloudflare-kv-binding',
+      binding: 'CACHE',
       namespaceId: '519b4c402ce444c6ad7e9a6eac1d58d9',
     },
   },
