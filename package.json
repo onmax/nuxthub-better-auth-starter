@@ -15,7 +15,7 @@
   "dependencies": {
     "@nuxt/ui": "^4.2.0",
     "@nuxthub/core": "^0.10.4",
-    "@onmax/nuxt-better-auth": "0.0.2-alpha.5",
+    "@onmax/nuxt-better-auth": "https://pkg.pr.new/onmax/nuxt-better-auth/@onmax/nuxt-better-auth@19",
     "better-auth": "^1.4.7",
     "nuxt": "^4.2.0",
     "tailwindcss": "^4.1.18",
