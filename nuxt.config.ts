@@ -33,7 +33,7 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    public: { siteUrl: '' }, // Set via NUXT_PUBLIC_SITE_URL
+    public: { siteUrl: 'https://onmax-nuxthub-better-auth-starter.maximogarciamtnez.workers.dev' },
   },
 
   devtools: { enabled: true },
