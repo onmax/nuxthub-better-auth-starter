@@ -3,13 +3,20 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
-  // NuxtHub: Supports sqlite (D1/Turso), postgresql (Neon), mysql (PlanetScale)
-  // Preset auto-detected from hosting provider (Cloudflare, Vercel, Deno, etc.)
-  // See: https://hub.nuxt.com/docs/getting-started/installation
   hub: {
-    db: 'sqlite',
-    kv: true,
-    cache: true,
+    db: {
+      dialect: 'sqlite',
+      driver: 'd1',
+      connection: { databaseId: '7ceacd83-9a4a-45b3-adf3-bd127df04bce' },
+    },
+    kv: {
+      driver: 'cloudflare-kv-binding',
+      namespaceId: '4f701e72f4414181b2a760cbb798fa8d',
+    },
+    cache: {
+      driver: 'cloudflare-kv-binding',
+      namespaceId: '519b4c402ce444c6ad7e9a6eac1d58d9',
+    },
   },
 
   // Better Auth: Configure redirects and session storage
