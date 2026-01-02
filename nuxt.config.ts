@@ -42,7 +42,7 @@ export default defineNuxtConfig({
   nitro: {
     cloudflare: {
       wrangler: {
-        observability: { logs: { enabled: false, head_sampling_rate: 1, invocation_logs: true, persist: true } },
+        observability: { logs: { enabled: true, head_sampling_rate: 1, invocation_logs: true, persist: true } },
       },
     },
   },
