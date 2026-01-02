@@ -3,7 +3,7 @@
 // Docs: https://developers.cloudflare.com/workers/wrangler/configuration/
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "nuxthub-better-auth-starter",
+  "name": "onmax-nuxthub-better-auth-starter",
   "compatibility_flags": ["nodejs_compat"],
   "d1_databases": [
     { "binding": "DB", "database_id": "YOUR_D1_DATABASE_ID" }
