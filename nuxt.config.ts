@@ -38,4 +38,12 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
   compatibilityDate: '2025-01-01',
+
+  nitro: {
+    cloudflare: {
+      wrangler: {
+        observability: { logs: { enabled: false, head_sampling_rate: 1, invocation_logs: true, persist: true } },
+      },
+    },
+  },
 })
