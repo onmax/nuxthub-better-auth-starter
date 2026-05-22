@@ -15,8 +15,8 @@ importers:
         specifier: ^0.10.4
         version: 0.10.4(db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.45.1(@cloudflare/workers-types@4.20260101.0)(@libsql/client@0.15.15)(kysely@0.28.9)))(ioredis@5.8.2)(magicast@0.5.1)(typescript@5.9.3)
       '@onmax/nuxt-better-auth':
-        specifier: https://pkg.pr.new/onmax/nuxt-better-auth/@onmax/nuxt-better-auth@19
-        version: https://pkg.pr.new/onmax/nuxt-better-auth/@onmax/nuxt-better-auth@19(@nuxthub/core@0.10.4(db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.45.1(@cloudflare/workers-types@4.20260101.0)(@libsql/client@0.15.15)(kysely@0.28.9)))(ioredis@5.8.2)(magicast@0.5.1)(typescript@5.9.3))(better-auth@1.4.10(drizzle-kit@0.31.8)(drizzle-orm@0.45.1(@cloudflare/workers-types@4.20260101.0)(@libsql/client@0.15.15)(kysely@0.28.9))(vue@3.5.26(typescript@5.9.3)))(magicast@0.5.1)
+        specifier: https://pkg.pr.new/onmax/nuxt-better-auth/@onmax/nuxt-better-auth@32
+        version: https://pkg.pr.new/onmax/nuxt-better-auth/@onmax/nuxt-better-auth@32(@nuxthub/core@0.10.4(db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.45.1(@cloudflare/workers-types@4.20260101.0)(@libsql/client@0.15.15)(kysely@0.28.9)))(ioredis@5.8.2)(magicast@0.5.1)(typescript@5.9.3))(better-auth@1.4.10(drizzle-kit@0.31.8)(drizzle-orm@0.45.1(@cloudflare/workers-types@4.20260101.0)(@libsql/client@0.15.15)(kysely@0.28.9))(vue@3.5.26(typescript@5.9.3)))(magicast@0.5.1)
       better-auth:
         specifier: ^1.4.7
         version: 1.4.10(drizzle-kit@0.31.8)(drizzle-orm@0.45.1(@cloudflare/workers-types@4.20260101.0)(@libsql/client@0.15.15)(kysely@0.28.9))(vue@3.5.26(typescript@5.9.3))
@@ -1270,9 +1270,9 @@ packages:
   '@nuxtjs/color-mode@3.5.2':
     resolution: {integrity: sha512-cC6RfgZh3guHBMLLjrBB2Uti5eUoGM9KyauOaYS9ETmxNWBMTvpgjvSiSJp1OFljIXPIqVTJ3xtJpSNZiO3ZaA==}
 
-  '@onmax/nuxt-better-auth@https://pkg.pr.new/onmax/nuxt-better-auth/@onmax/nuxt-better-auth@19':
-    resolution: {tarball: https://pkg.pr.new/onmax/nuxt-better-auth/@onmax/nuxt-better-auth@19}
-    version: 0.0.2-alpha.5
+  '@onmax/nuxt-better-auth@https://pkg.pr.new/onmax/nuxt-better-auth/@onmax/nuxt-better-auth@32':
+    resolution: {tarball: https://pkg.pr.new/onmax/nuxt-better-auth/@onmax/nuxt-better-auth@32}
+    version: 0.0.2-alpha.9
     peerDependencies:
       '@nuxthub/core': '>=0.10.0'
       better-auth: '>=1.0.0'
@@ -3428,6 +3428,7 @@ packages:
 
   glob@10.5.0:
     resolution: {integrity: sha512-DfXN8DfhJ7NH3Oe7cFmu3NCu1wKbkReJ8TorzSAFbSKrlNaQSKfIzqYqVY8zlbs2NLBbWpRiU52GX2PbaBVNkg==}
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
     hasBin: true
 
   global-directory@4.0.1:
@@ -3685,6 +3686,7 @@ packages:
 
   libsql@0.5.22:
     resolution: {integrity: sha512-NscWthMQt7fpU8lqd7LXMvT9pi+KhhmTHAJWUB/Lj6MWa0MKFv0F2V4C6WKKpjCVZl0VwcDz4nOI3CyaT1DDiA==}
+    cpu: [x64, arm64, wasm32, arm]
     os: [darwin, linux, win32]
 
   lightningcss-android-arm64@1.30.2:
@@ -4763,6 +4765,7 @@ packages:
   tar@7.5.2:
     resolution: {integrity: sha512-7NyxrTE4Anh8km8iEy7o0QYPs+0JKBTj5ZaqHg6B39erLg0qYXN3BijtShwbsNSvQ+LN75+KV+C4QR/f6Gwnpg==}
     engines: {node: '>=18'}
+    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   terser@5.44.1:
     resolution: {integrity: sha512-t/R3R/n0MSwnnazuPpPNVO60LX0SKL45pyl9YlvxIdkH0Of7D5qM2EVe+yASRIlY5pZ73nclYJfNANGWPwFDZw==}
@@ -4928,6 +4931,7 @@ packages:
 
   unplugin-vue-router@0.19.2:
     resolution: {integrity: sha512-u5dgLBarxE5cyDK/hzJGfpCTLIAyiTXGlo85COuD4Nssj6G7NxS+i9mhCWz/1p/ud1eMwdcUbTXehQe41jYZUA==}
+    deprecated: 'Merged into vuejs/router. Migrate: https://router.vuejs.org/guide/migration/v4-to-v5.html'
     peerDependencies:
       '@vue/compiler-sfc': ^3.5.17
       vue-router: ^4.6.0
@@ -6721,7 +6725,7 @@ snapshots:
     transitivePeerDependencies:
       - magicast
 
-  '@onmax/nuxt-better-auth@https://pkg.pr.new/onmax/nuxt-better-auth/@onmax/nuxt-better-auth@19(@nuxthub/core@0.10.4(db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.45.1(@cloudflare/workers-types@4.20260101.0)(@libsql/client@0.15.15)(kysely@0.28.9)))(ioredis@5.8.2)(magicast@0.5.1)(typescript@5.9.3))(better-auth@1.4.10(drizzle-kit@0.31.8)(drizzle-orm@0.45.1(@cloudflare/workers-types@4.20260101.0)(@libsql/client@0.15.15)(kysely@0.28.9))(vue@3.5.26(typescript@5.9.3)))(magicast@0.5.1)':
+  '@onmax/nuxt-better-auth@https://pkg.pr.new/onmax/nuxt-better-auth/@onmax/nuxt-better-auth@32(@nuxthub/core@0.10.4(db0@0.3.4(@libsql/client@0.15.15)(drizzle-orm@0.45.1(@cloudflare/workers-types@4.20260101.0)(@libsql/client@0.15.15)(kysely@0.28.9)))(ioredis@5.8.2)(magicast@0.5.1)(typescript@5.9.3))(better-auth@1.4.10(drizzle-kit@0.31.8)(drizzle-orm@0.45.1(@cloudflare/workers-types@4.20260101.0)(@libsql/client@0.15.15)(kysely@0.28.9))(vue@3.5.26(typescript@5.9.3)))(magicast@0.5.1)':
     dependencies:
       '@nuxt/kit': 4.2.2(magicast@0.5.1)
       better-auth: 1.4.10(drizzle-kit@0.31.8)(drizzle-orm@0.45.1(@cloudflare/workers-types@4.20260101.0)(@libsql/client@0.15.15)(kysely@0.28.9))(vue@3.5.26(typescript@5.9.3))
